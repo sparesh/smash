@@ -1,11 +1,11 @@
 {
   "name": "@omarbsoul/smash",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "./node_modules/.bin/tsc -p .",
+    "build": "./node_modules/.bin/tsc -p ./tsconfig.build.json",
     "prepublish": "npm run build",
     "deploy": "npm publish --access public"
   },
