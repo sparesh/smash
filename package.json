@@ -1,0 +1,72 @@
+{
+  "name": "@omarbsoul/smash",
+  "version": "2.3.2",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "./node_modules/.bin/tsc -p .",
+    "prepublish": "npm run build",
+    "deploy": "npm publish --access public"
+  },
+  "directories": {
+    "lib": "dist",
+    "bin": "dist"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/hapi__joi": "^16.0.12",
+    "@hapi/joi": "^17.1.1",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^12.12.31",
+    "jest": "^25.2.3",
+    "typescript": "^3.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Omar-Bsoul/smash/tree/master/src/core"
+  },
+  "keywords": [
+    "smash",
+    "core",
+    "smashjs",
+    "typescript",
+    "decorator",
+    "decorators",
+    "routes",
+    "route",
+    "router",
+    "express",
+    "express-ts",
+    "expressjs",
+    "rest",
+    "restful",
+    "simple",
+    "server",
+    "middlware",
+    "options",
+    "controller",
+    "controllers",
+    "api",
+    "framework",
+    "web",
+    "service",
+    "webserver",
+    "services",
+    "back-end",
+    "node",
+    "nodejs"
+  ],
+  "author": "Omar Bsoul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omar-Bsoul/smash/issues"
+  },
+  "homepage": "https://github.com/Omar-Bsoul/smash#readme",
+  "description": ""
+}
