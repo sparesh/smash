@@ -10,8 +10,8 @@
     "deploy": "npm publish --access public"
   },
   "directories": {
-    "lib": "dist",
-    "bin": "dist"
+    "lib": "lib",
+    "bin": "lib"
   },
   "dependencies": {
     "express": "^4.17.1",
