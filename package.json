@@ -1,8 +1,8 @@
 {
   "name": "@omarbsoul/smash",
   "version": "2.3.3",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "./node_modules/.bin/tsc -p .",
