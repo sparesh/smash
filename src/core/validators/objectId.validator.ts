@@ -3,7 +3,7 @@ import { ValidatorBase } from ".";
 import { Validator } from "..";
 
 @Validator()
-export class ObjectIdValidator extends ValidatorBase {
+export class ObjectIdValidator extends ValidatorBase<string> {
   public getNewSchema(): Joi.Schema {
     return this.objectId();
   }

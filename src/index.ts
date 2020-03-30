@@ -38,8 +38,8 @@ export type ApiError = __ApiError;
 export type ModulesBuilder = __ModulesBuilder;
 export type IModule = __IModule;
 export type IMiddleware = __IMiddleware;
-export type IValidator = __IValidator;
-export type ValidatorBase = __ValidatorBase;
+export type IValidator<T> = __IValidator<T>;
+export type ValidatorBase<T> = __ValidatorBase<T>;
 export type CORHandler<T> = __CORHandler<T>;
 export type CORBuilder<T> = __CORBuilder<T>;
 
