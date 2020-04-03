@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 export const errorController = (error: any, req: Request, res: Response, next: NextFunction) => {
   if (error) {
@@ -7,7 +7,7 @@ export const errorController = (error: any, req: Request, res: Response, next: N
     } else if (error.userError) {
       res.status(error.code).send({ error: error.message });
     } else {
-      res.status(500).send({ error: 'Internal Server Error' });
+      res.status(500).send(process.env.NODE_ENV === "production" ? { error: "Internal Server Error" } : error);
     }
   }
 };

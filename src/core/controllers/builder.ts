@@ -71,7 +71,9 @@ export class ControllersBuilder {
   private wrapRoute(route: any, isAsync: boolean = false): RequestHandler {
     return (req, res, next) => {
       if (isAsync) {
-        route(req, res, next).catch(next);
+        route(req, res, next).catch((error: Error) => {
+          next();
+        });
       } else {
         try {
           (route as RequestHandler)(req, res, next);
