@@ -6,7 +6,7 @@ export abstract class CORHandler<T> {
     if (this.canHandle(data)) {
       return this.transform(data);
     } else if (this.next !== null) {
-      this.next.request(data);
+      return this.next.request(data);
     } else {
       return undefined;
     }
