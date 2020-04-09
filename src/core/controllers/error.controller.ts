@@ -7,7 +7,7 @@ export const errorController = (error: any, req: Request, res: Response, next: N
     } else if (error.userError) {
       res.status(error.code).send({ error: error.message });
     } else {
-      res.status(500).send(process.env.NODE_ENV === "production" ? { error: "Internal Server Error" } : { error: error.message });
+      res.status(500).send(process.env.NODE_ENV === "production" ? { error: "Internal Server Error" } : error.message);
     }
   }
 };
