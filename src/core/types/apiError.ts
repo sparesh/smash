@@ -1,11 +1,9 @@
 export class ApiError extends Error {
-  public code: number;
   public userError: boolean;
 
-  constructor(message: string, code: number) {
-    super(message);
+  constructor(public errorInfo: any, public code: number) {
+    super();
 
-    this.code = code;
     this.userError = code >= 400 && code < 500;
   }
 }

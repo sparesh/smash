@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from "express";
+import { ApiError } from "../types";
 
-export const errorController = (error: any, req: Request, res: Response, next: NextFunction) => {
+export const errorController = (error: ApiError | Error, req: Request, res: Response, next: NextFunction) => {
   if (error) {
-    if (error.isJoi) {
-      res.status(400).send({ error: error.message });
-    } else if (error.userError) {
-      res.status(error.code).send({ error: error.message });
-    } else {
-      res.status(500).send(process.env.NODE_ENV === "production" ? { error: "Internal Server Error" } : error.message);
+    if (error instanceof ApiError) {
+      const isJoi = (error as any).isJoi;
+      res.status(isJoi ? 400 : error.code).send({ error: error.errorInfo });
     }
+
+    res.status(500).send(process.env.NODE_ENV === "production" ? { error: "internal server error" } : error.message);
   }
 };

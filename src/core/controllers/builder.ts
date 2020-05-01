@@ -16,7 +16,7 @@ export class ControllersBuilder {
   }
 
   remove(...controllers: Controller[]): ControllersBuilder {
-    this.controllers = this.controllers.filter(controller => !controllers.includes(controller));
+    this.controllers = this.controllers.filter((controller) => !controllers.includes(controller));
     return this;
   }
 
@@ -37,9 +37,10 @@ export class ControllersBuilder {
       if (!middlewares || !middlewares.length) {
         middlewares = [defaultHandler];
       } else {
-        middlewares = middlewares.map(Middleware => {
+        middlewares = middlewares.map((Middleware) => {
           const middleware = container.get(Middleware) as IMiddleware;
-          return middleware.main.bind(middleware);
+          const isAsync = types.isAsyncFunction(middleware.main);
+          return this.wrapRoute(middleware.main.bind(middleware), isAsync);
         });
       }
 
@@ -47,15 +48,16 @@ export class ControllersBuilder {
         router.all("*", ...middlewares, (req, res, next) => res.send({ message: `${Controller.name} is alive!` }));
       }
 
-      routes.forEach(route => {
+      routes.forEach((route) => {
         const routePath = resource + route.path;
 
         if (!route.middlewares.length) {
           route.middlewares = [defaultHandler];
         } else {
-          route.middlewares = route.middlewares.map(Middleware => {
+          route.middlewares = route.middlewares.map((Middleware) => {
             const middleware = container.get(Middleware) as IMiddleware;
-            return middleware.main.bind(middleware);
+            const isAsync = types.isAsyncFunction(middleware.main);
+            return this.wrapRoute(middleware.main.bind(middleware), isAsync);
           });
         }
 
