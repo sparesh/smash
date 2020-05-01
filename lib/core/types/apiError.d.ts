@@ -1,5 +1,6 @@
 export declare class ApiError extends Error {
+    errorInfo: any;
     code: number;
     userError: boolean;
-    constructor(message: string, code: number);
+    constructor(errorInfo: any, code: number);
 }
